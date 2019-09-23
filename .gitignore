@@ -172,3 +172,5 @@ typings/
 # DynamoDB Local files
 .dynamodb/
 
+### User Templates
+pkg/
