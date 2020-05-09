@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const WasmPackPlugin = require("@wasm-tool/wasm-pack-plugin");
 
 module.exports = {
+    mode: 'development',
     entry: './index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -17,9 +18,13 @@ module.exports = {
         // Have this example work in Edge which doesn't ship `TextEncoder` or
         // `TextDecoder` at this time.
         new webpack.ProvidePlugin({
-          TextDecoder: ['text-encoding', 'TextDecoder'],
-          TextEncoder: ['text-encoding', 'TextEncoder']
+            TextDecoder: ['text-encoding', 'TextDecoder'],
+            TextEncoder: ['text-encoding', 'TextEncoder']
         })
     ],
-    mode: 'development'
+    devServer: {
+        contentBase: path.join(__dirname, 'dist'),
+        port: 9000,
+        hot: true
+    }
 };
