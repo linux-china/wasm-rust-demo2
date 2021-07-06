@@ -11,6 +11,9 @@ module.exports = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'index.js',
     },
+    experiments: {
+        asyncWebAssembly: true
+    },
     plugins: [
         new HtmlWebpackPlugin(),
         new WasmPackPlugin({
