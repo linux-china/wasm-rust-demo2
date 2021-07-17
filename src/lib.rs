@@ -33,6 +33,39 @@ macro_rules! console_log {
 
 
 #[wasm_bindgen]
-pub fn greet(name: &str) {
+pub fn greet(name: &str) -> Greeting {
     console_log!("Hello {}!", name);
+    return Greeting {
+        id: 11,
+        name: "xxx".to_string(),
+    };
+}
+
+#[wasm_bindgen]
+pub struct Greeting {
+    id: u32,
+    name: String,
+}
+
+#[wasm_bindgen]
+impl Greeting {
+    #[wasm_bindgen(getter)]
+    pub fn name(&self) -> String {
+        self.name.clone()
+    }
+
+    #[wasm_bindgen(setter)]
+    pub fn set_name(&mut self, name: String) {
+        self.name = name;
+    }
+
+    #[wasm_bindgen(getter)]
+    pub fn id(&self) -> u32 {
+        self.id
+    }
+
+    #[wasm_bindgen(setter)]
+    pub fn set_id(&mut self, id: u32) {
+        self.id = id;
+    }
 }
