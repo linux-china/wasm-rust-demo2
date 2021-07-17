@@ -1,3 +1,3 @@
 import {greet} from "./pkg";
 
-greet('World');
+console.log(greet('World').name);
